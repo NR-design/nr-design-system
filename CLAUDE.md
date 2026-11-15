@@ -27,8 +27,8 @@ driven by W3C DTCG design tokens.
 ## Token flow
 `tokens/primitives` → `tokens/semantic` → `tokens/dist`
 
-1. **Primitives** hold raw values only (e.g. `color.blue.500`).
-2. **Semantic** tokens alias primitives by intent (e.g. `color.bg.accent → {color.blue.500}`).
+1. **Primitives** hold raw values only (e.g. `color.green.100`).
+2. **Semantic** tokens alias primitives by intent (e.g. `color.action.primary.default → {color.green.100}`).
    Components consume semantic tokens, never primitives directly.
 3. **Dist** is build output (CSS custom properties + TS constants). Regenerate; don't edit.
 
