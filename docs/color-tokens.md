@@ -93,7 +93,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle |
 | `text.disabled` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled text. Exempt from contrast requirements; do not use for readable content. | exempt |
 | `text.inverse` | `gray.100` (#eeeeee) | `gray.950` (#1b1b1b) | Text on surface.inverse. | 14.8 / 14.8 on surface.inverse |
-| `text.brand` | `green.700` (#2e6960) | `green.400` (#8cb5ad) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 7.7 on surface.default; 5.5 / 7.6 on surface.brand-subtle |
+| `text.brand` | `green.700` (#2e6960) | `green.300` (#b1cfc9) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 10.4 on surface.default; 5.5 / 10.3 on surface.brand-subtle; 5.8 on dark surface.muted and surface.raised |
 | `text.link` | `green.900` (#053630) | `green.300` (#b1cfc9) | Inline links. Always pair with an underline or another non-color cue. | 12.4 / 10.4 on surface.default; 11.5 / 7.9 on surface.subtle |
 | `text.selection.background` | `yellow.200` (#ffd799) | `yellow.700` (#7c5500) | Highlighted text. | n/a |
 | `text.selection.foreground` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Text inside a selection. | 12.7 / 5.7 on text.selection.background |
