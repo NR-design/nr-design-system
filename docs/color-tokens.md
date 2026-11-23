@@ -129,7 +129,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `action.secondary.pressed` | `green.500` (#689b92) | `green.700` (#2e6960) | Accent button pressed. | n/a |
 | `action.secondary.on` | `green.950` (#00201c) | `green.100` (#e6f2ef) | Text and icons on any action.secondary state. | 10.3 / 11.6 on action.secondary.default; 7.6 / 8.1 on action.secondary.hover; 5.5 / 5.5 on action.secondary.pressed |
 | `action.disabled.background` | `gray.100` (#eeeeee) | `gray.900` (#303030) | Disabled control fill. | exempt |
-| `action.disabled.foreground` | `gray.400` (#ababab) | `gray.600` (#747474) | Disabled control text and icons. | exempt |
+| `action.disabled.foreground` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled control text and icons. | exempt |
 
 ### Feedback (status messages)
 
@@ -246,7 +246,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Dark | `surface.subtle` (#303030) | #414141 | 8.8 | 6.0 | 4.5 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #545454 | 6.5 | **4.48** | 3.3 |
 
-- **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.8 dark.
+- **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.0 dark.
 
 ## 8. Known gaps
 
@@ -263,7 +263,6 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **Known failures from section 7:** dark `text.placeholder` on `surface.muted` and `surface.raised` (4.2:1); dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
-- **Disabled steps differ in dark mode.** `text.disabled` is `gray.700` but `action.disabled.foreground` is `gray.600`. Both are `gray.400` in light mode.
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **Section 6 white statement is incomplete.** White is also used in the dark hover overlay (`surface.interactive.hover`).
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
