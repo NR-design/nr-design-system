@@ -81,7 +81,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `surface.inverse` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | High-contrast surface (toasts, tooltips). Use text.inverse on it. | n/a |
 | `surface.brand-subtle` | `green.100` (#e6f2ef) | `green.950` (#00201c) | Alternate brand-tinted page and app background. | n/a |
 | `surface.scrim` | `#1b1b1b` @ 50% alpha | `#1b1b1b` @ 70% alpha | Overlay behind modals and drawers. Source: color.gray.950 | n/a |
-| `surface.interactive.hover` | `#1b1b1b` @ 8% alpha | `#ffffff` @ 8% alpha | Hover fill for list rows, menu items and cards. Overlay composited on the surface below. Source (light/dark): color.gray.950/White | see section 7 |
+| `surface.interactive.hover` | `#1b1b1b` @ 8% alpha | `#ffffff` @ 6% alpha | Hover fill for list rows, menu items and cards. Overlay composited on the surface below. Source (light/dark): color.gray.950/White | see section 7 |
 | `surface.interactive.selected` | `green.200` (#cfe3df) | `green.900` (#053630) | Selected row or item. | text.primary 12.9 / 11.5 |
 
 ### Text
@@ -204,7 +204,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 7. **Primary vs secondary actions.** Action colors use only tints and shades of Green. Primary (`action.primary.*`) is the main action on a screen. Secondary (`action.secondary.*`) is for supporting actions and is visually lighter than primary. Do not use Yellow, Purple or any feedback color (success, warning, error, info) for buttons.
 8. **Modes.** Use the same token name in light and dark. Never hard-code a mode-specific value or branch on mode in a component.
 9. **Scrim.** `surface.scrim` is `gray.950` (`#1b1b1b`) with alpha (50% light, 70% dark). It is a literal value rather than an alias due to DTCG alias constraints. Its description names the source. If `gray.950` changes, update the scrim to match.
-10. **Hover.** `surface.interactive.hover` is an overlay, not a gray step: `gray.950` (`#1b1b1b`) at 8% in light mode, white at 8% in dark mode, composited over whatever surface is below. Like the scrim, it is a literal with alpha and a source note in its description.
+10. **Hover.** `surface.interactive.hover` is an overlay, not a gray step: `gray.950` (`#1b1b1b`) at 8% in light mode, white at 6% in dark mode, composited over whatever surface is below. Like the scrim, it is a literal with alpha and a source note in its description.
 11. **Do not invent tokens.** If no token fits, say so and propose a new semantic token rather than using a nearby one.
 12. **Tailwind.** Ramp names are plain (`green`, `gray`, …) and replace Tailwind's same-named defaults. Remove the rest of the default palette (v4: `--color-*: initial;` before the custom definitions; keep `white`, `black`, `transparent`, `current`) so off-brand ramps such as `emerald` are unavailable. Check pre-styled UI libraries before adopting them.
 
@@ -221,7 +221,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 ## 6. Light and dark modes
 
-- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 8% alpha instead, like the scrim.
+- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 6% alpha instead, like the scrim.
 - `surface.raised` is lighter than the page in both modes: `white` on `gray.50` in light, `gray.800` on `gray.950` in dark. In dark mode it shares its value with `surface.muted`. Dark surfaces step from `gray.950` through `gray.900` and `gray.800`.
 - Dark action colors are lighter than in light mode (`green.400` instead of `green.600`), get lighter on hover and press, and their on-color is a dark green (`green.900`).
 - `surface.inverse` is dark in light mode (`gray.950`) and light in dark mode (`gray.100`).
@@ -243,9 +243,9 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Mode | Surface | Composite | text.primary | text.secondary | icon.subtle |
 | --- | --- | --- | --- | --- | --- |
 | Light | `surface.default` (#f7f7f7) | #e5e5e5 | 13.7 | 5.2 | 3.7 |
-| Dark | `surface.default` (#1b1b1b) | #2d2d2d | 11.9 | 8.2 | 6.0 |
-| Dark | `surface.subtle` (#303030) | #414141 | 8.8 | 6.0 | 4.5 |
-| Dark | `surface.muted` / `surface.raised` (#454545) | #545454 | 6.5 | **4.48** | 3.3 |
+| Dark | `surface.default` (#1b1b1b) | #292929 | 12.5 | 8.6 | 6.3 |
+| Dark | `surface.subtle` (#303030) | #3c3c3c | 9.5 | 6.5 | 4.8 |
+| Dark | `surface.muted` / `surface.raised` (#454545) | #505050 | 7.0 | 4.77 | 3.5 |
 
 - **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.0 dark.
 
@@ -262,7 +262,6 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
-- **Known failures from section 7:** dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
 - **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
