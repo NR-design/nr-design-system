@@ -220,7 +220,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 ## 6. Light and dark modes
 
-- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. White is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds).
+- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 8% alpha instead, like the scrim.
 - `surface.raised` is lighter than the page in both modes: `white` on `gray.50` in light, `gray.800` on `gray.950` in dark. In dark mode it shares its value with `surface.muted`. Dark surfaces step from `gray.950` through `gray.900` and `gray.800`.
 - Dark action colors are lighter than in light mode (`green.400` instead of `green.600`), get lighter on hover and press, and their on-color is a dark green (`green.900`).
 - `surface.inverse` is dark in light mode (`gray.950`) and light in dark mode (`gray.100`).
@@ -264,6 +264,5 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **Known failures from section 7:** dark `text.placeholder` on `surface.muted` and `surface.raised` (4.2:1); dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
-- **Section 6 white statement is incomplete.** White is also used in the dark hover overlay (`surface.interactive.hover`).
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
 - **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
