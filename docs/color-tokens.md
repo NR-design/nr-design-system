@@ -246,9 +246,11 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Light | `surface.subtle` (#eeeeee) | #dddddd | 12.7 | 4.85 | 3.4 |
 | Light | `surface.muted` (#dedede) | #cecece | 10.9 | **4.2** | **2.97** |
 | Light | `surface.raised` (#ffffff) | #ededed | 14.7 | 5.6 | 4.0 |
+| Light | `surface.brand-subtle` (#e6f2ef) | #d6e1de | 12.9 | 4.9 | 3.5 |
 | Dark | `surface.default` (#1b1b1b) | #292929 | 12.5 | 8.6 | 6.3 |
 | Dark | `surface.subtle` (#303030) | #3c3c3c | 9.5 | 6.5 | 4.8 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #505050 | 7.0 | 4.77 | 3.5 |
+| Dark | `surface.brand-subtle` (#00201c) | #0f2d2a | 12.7 | 8.7 | 6.4 |
 
 - **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.0 dark.
 
