@@ -13,8 +13,8 @@ Figma Documentation: *Nick’s Design Library 2.0*, frame **Colors** (node `524:
 | File | Tier | Contents |
 | --- | --- | --- |
 | `color.primitive.tokens.json` | Primitive | 73 tokens: Green, Yellow, Gray, Blue, Red and Purple ramps (11 steps each), one `base` alias per ramp, and white |
-| `color.semantic.light.tokens.json` | Semantic | 69 role-based tokens for light mode. All are aliases to primitives except `surface.scrim` and `surface.interactive.hover` |
-| `color.semantic.dark.tokens.json` | Semantic | 69 role-based tokens for dark mode. Same exceptions as light |
+| `color.semantic.light.tokens.json` | Semantic | 70 role-based tokens for light mode. All are aliases to primitives except `surface.scrim` and `surface.interactive.hover` |
+| `color.semantic.dark.tokens.json` | Semantic | 70 role-based tokens for dark mode. Same exceptions as light |
 
 Load `color.primitive.tokens.json` together with one semantic file. A semantic file on its own has unresolved aliases.
 
@@ -221,7 +221,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 ## 6. Light and dark modes
 
-- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 6% alpha instead, like the scrim.
+- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised`, `surface.input` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 6% alpha instead, like the scrim.
 - `surface.raised` is lighter than the page in both modes: `white` on `gray.50` in light, `gray.800` on `gray.950` in dark. In dark mode it shares its value with `surface.muted`. Dark surfaces step from `gray.950` through `gray.900` and `gray.800`.
 - Dark action colors are lighter than in light mode (`green.400` instead of `green.600`), get lighter on hover and press, and their on-color is a dark green (`green.900`).
 - `surface.inverse` is dark in light mode (`gray.950`) and light in dark mode (`gray.100`).
