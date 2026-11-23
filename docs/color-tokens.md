@@ -77,6 +77,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `surface.raised` | `white` (#ffffff) | `gray.800` (#454545) | Cards, popovers and panels that sit above the page. Pair with a `border.default` edge in light mode. | text.primary 17.2 / 8.3; text.secondary 6.6 / 5.7; text.placeholder 6.6 / **4.2**; border.strong 4.7 / 4.2 |
 | `surface.subtle` | `gray.100` (#eeeeee) | `gray.900` (#303030) | Quiet panels, cards and table stripes on the default surface. | n/a |
 | `surface.muted` | `gray.200` (#dedede) | `gray.800` (#454545) | Pressed or selected neutral areas, chips, dividers with fill. | n/a |
+| `surface.input` | `white` (#ffffff) | `gray.950` (#1b1b1b) | Fill of text inputs, textareas and selects. Use on any surface, including `surface.muted` and `surface.raised`. Always draw a `border.strong` outline; the fill alone does not separate the field from its container. | text.primary 17.2 / 14.8; text.secondary 6.6 / 10.2; text.placeholder 6.6 / 7.5; border.strong 4.7 / 7.5 |
 | `surface.inverse` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | High-contrast surface (toasts, tooltips). Use text.inverse on it. | n/a |
 | `surface.brand-subtle` | `green.100` (#e6f2ef) | `green.950` (#00201c) | Alternate brand-tinted page and app background. | n/a |
 | `surface.scrim` | `#1b1b1b` @ 50% alpha | `#1b1b1b` @ 70% alpha | Overlay behind modals and drawers. Source: color.gray.950 | n/a |
@@ -89,7 +90,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | --- | --- | --- | --- | --- |
 | `text.primary` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Default body and heading text. | 16.1 / 14.8 on surface.default; 14.8 / 11.4 on surface.subtle; 12.8 / 8.3 on surface.muted |
 | `text.secondary` | `gray.700` (#5d5d5d) | `gray.300` (#c7c7c7) | Supporting text, captions, helper text. | 6.1 / 10.2 on surface.default; 5.7 / 7.8 on surface.subtle; 4.9 / 5.7 on surface.muted |
-| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. | 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle; 4.9 / **4.2** on surface.muted |
+| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle; 4.9 / 4.2 on surface.muted (not for inputs; use `surface.input`) |
 | `text.disabled` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled text. Exempt from contrast requirements; do not use for readable content. | exempt |
 | `text.inverse` | `gray.100` (#eeeeee) | `gray.950` (#1b1b1b) | Text on surface.inverse. | 14.8 / 14.8 on surface.inverse |
 | `text.brand` | `green.700` (#2e6960) | `green.400` (#8cb5ad) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 7.7 on surface.default; 5.5 / 7.6 on surface.brand-subtle |
@@ -198,7 +199,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 2. **Always pair.** Put text and icons on a background using the matching foreground token: `action.primary.on` on `action.primary.*`, `action.secondary.on` on `action.secondary.*`, `text.inverse` and `icon.inverse` on `surface.inverse`, `feedback.*.foreground` on `feedback.*.background`, `feedback.*.solid.foreground` on `feedback.*.solid.background`.
 3. **Contrast targets.** Text needs 4.5:1. Icons and control borders need 3:1. Disabled content is exempt, but must not carry readable information.
 4. **Never rely on color alone.** Pair status colors with an icon and a text label. Links need an underline or other non-color cue.
-5. **Borders.** `border.default` is for dividers and decoration only. Use `border.strong` for input, checkbox and other control outlines.
+5. **Borders.** `border.default` is for dividers and decoration only. Use `border.strong` for input, checkbox and other control outlines. Text inputs use `surface.input` as their fill, with a `border.strong` outline, on any surface.
 6. **Focus.** Use `border.focus` for the keyboard focus ring, drawn with a 2px gap between ring and component so it is measured against the surface.
 7. **Primary vs secondary actions.** Action colors use only tints and shades of Green. Primary (`action.primary.*`) is the main action on a screen. Secondary (`action.secondary.*`) is for supporting actions and is visually lighter than primary. Do not use Yellow, Purple or any feedback color (success, warning, error, info) for buttons.
 8. **Modes.** Use the same token name in light and dark. Never hard-code a mode-specific value or branch on mode in a component.
@@ -230,7 +231,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the values in section 3.
 
-- **All required text pairs pass 4.5:1** except one: dark `text.placeholder` on `surface.muted` and `surface.raised` (both Gray 800) is 4.2:1. Inputs should not sit on these surfaces in dark mode.
+- **All required text pairs pass 4.5:1.** Dark `text.placeholder` on `surface.muted` and `surface.raised` (both Gray 800) is 4.2:1, so it is not used there. Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
 - **Dark feedback borders on neutral surfaces:** info and error borders are below 3:1 off the page (info 2.9 on `surface.subtle`, 2.1 on `surface.muted` and `surface.raised`; error 2.7 and 1.9). They pass only on `surface.default`. Banners inside dark cards and panels rely on their fill and icon, not the border, to stand out.
 - **All icon, control border and focus pairs pass 3:1** on `surface.default`, `surface.subtle` and `surface.muted` in both modes.
 - **All data visualization tokens pass 3:1** on `surface.default` and `surface.subtle` in both modes (gridline excepted; it is decorative). Narrowest: dark `dataviz.categorical.5` on `surface.subtle` (3.9:1). On dark `surface.muted` and `surface.raised` (Gray 800), `dataviz.categorical.3` (2.97:1) and `dataviz.categorical.5` (2.8:1) fail, and `dataviz.single` is 3.06:1; see rule 20.
@@ -251,7 +252,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 ## 8. Known gaps
 
 - **Token files and Figma out of date.** `color.primitive.tokens.json`, both semantic files and the Figma paint styles still use the old 10–190 values. Regenerate them from section 3, remove the in-between Figma steps (150, 250, …), and create Figma variables (Primitives collection; Semantic collection with Light and Dark modes).
-- **Semantic files need the remap in section 4**, plus: add the 12 `dataviz.*` tokens, rename `jet` to `gray` and `xanthous` to `yellow`, and fix the `soild` typo (`feedback.*.solid.foreground`).
+- **Semantic files need the remap in section 4**, plus: add `surface.input` and the 12 `dataviz.*` tokens, rename `jet` to `gray` and `xanthous` to `yellow`, and fix the `soild` typo (`feedback.*.solid.foreground`).
 - **Semantic role names are not in Figma.** Only the primitives map to Figma variables. The semantic names and the light and dark assignments were authored for these files.
 - **Figma’s native export omits `$description`.** Semantic descriptions (purpose and pairing) would be lost on a round trip through Figma’s export, so the JSON files stay the source of truth.
 - **No machine-readable pairing list, status or deprecation fields.** Pairings and rules exist only in descriptions and in this document.
@@ -261,7 +262,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
-- **Known failures from section 7:** dark `text.placeholder` on `surface.muted` and `surface.raised` (4.2:1); dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
+- **Known failures from section 7:** dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
 - **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
