@@ -143,7 +143,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `feedback.success.border` | `green.600` (#3f7f75) | `green.500` (#689b92) | Success banner border. | 4.4 / 5.5 on surface.default |
 | `feedback.warning.background` | `yellow.50` (#fff5e7) | `yellow.950` (#261700) | Warning banner fill. | n/a |
 | `feedback.warning.foreground` | `yellow.800` (#5c3f00) | `yellow.200` (#ffd799) | Warning text and icons on feedback.warning.background. | 9.0 / 12.8 on feedback.warning.background |
-| `feedback.warning.border` | `yellow.600` (#996a00) | `yellow.400` (#db9e27) | Warning banner border. | 4.4 / 7.3 on surface.default; 4.1 / n/a on surface.subtle; 3.5 / n/a on surface.muted |
+| `feedback.warning.border` | `yellow.600` (#996a00) | `yellow.400` (#db9e27) | Warning banner border. | 4.4 / 7.3 on surface.default; 4.1 / 5.6 on surface.subtle; 3.5 / 4.1 on surface.muted |
 | `feedback.error.background` | `red.100` (#ffe9e5) | `red.950` (#3b0000) | Error banner fill. | n/a |
 | `feedback.error.foreground` | `red.950` (#3b0000) | `red.400` (#dd958b) | Error text and icons on feedback.error.background. | 15.2 / 7.4 on feedback.error.background |
 | `feedback.error.border` | `red.700` (#a3342b) | `red.600` (#b55146) | Error banner border. | 6.4 / 3.5 on surface.default |
