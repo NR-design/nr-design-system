@@ -80,7 +80,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `surface.inverse` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | High-contrast surface (toasts, tooltips). Use text.inverse on it. | n/a |
 | `surface.brand-subtle` | `green.100` (#e6f2ef) | `green.950` (#00201c) | Alternate brand-tinted page and app background. | n/a |
 | `surface.scrim` | `#1b1b1b` @ 50% alpha | `#1b1b1b` @ 70% alpha | Overlay behind modals and drawers. Source: color.gray.950 | n/a |
-| `surface.interactive.hover` | `#1b1b1b` @ 8% alpha | `#ffffff` @ 8% alpha | Hover fill for list rows, menu items and cards. Overlay composited on the surface below. Source (light): color.gray.950 | see section 7 |
+| `surface.interactive.hover` | `#1b1b1b` @ 8% alpha | `#ffffff` @ 8% alpha | Hover fill for list rows, menu items and cards. Overlay composited on the surface below. Source (light/dark): color.gray.950/White | see section 7 |
 | `surface.interactive.selected` | `green.200` (#cfe3df) | `green.900` (#053630) | Selected row or item. | text.primary 12.9 / 11.5 |
 
 ### Text
