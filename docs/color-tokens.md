@@ -203,7 +203,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 7. **Primary vs secondary actions.** Action colors use only tints and shades of Green. Primary (`action.primary.*`) is the main action on a screen. Secondary (`action.secondary.*`) is for supporting actions and is visually lighter than primary. Do not use Yellow, Purple or any feedback color (success, warning, error, info) for buttons.
 8. **Modes.** Use the same token name in light and dark. Never hard-code a mode-specific value or branch on mode in a component.
 9. **Scrim.** `surface.scrim` is `gray.950` (`#1b1b1b`) with alpha (50% light, 70% dark). It is a literal value rather than an alias due to DTCG alias constraints. Its description names the source. If `gray.950` changes, update the scrim to match.
-10. **Hover.** `surface.interactive.hover` is an overlay, not a gray step: `gray.950` (`#1b1b1b`) at 8% in light mode, white at 8% in dark mode, composited over whatever surface is below. Like the scrim, it is a literal with alpha and a source note in its description.
+10. **Hover.** `surface.interactive.hover` is an overlay, not a gray step: `gray.950` (`#1b1b1b`) at 8% in light mode, white at 8% in dark mode, composited over whatever surface is below. Like the scrim, it is a literal with alpha and a source note in its description. Hover is not defined on `surface.muted` in light mode (`text.secondary` and `icon.subtle` fall below 4.5:1 and 3:1 there): elements on it use their own pressed or selected state. If chips need hover, give them a dedicated token (for example `surface.muted.hover`) instead of the overlay.
 11. **Do not invent tokens.** If no token fits, say so and propose a new semantic token rather than using a nearby one.
 12. **Tailwind.** Ramp names are plain (`green`, `gray`, …) and replace Tailwind's same-named defaults. Remove the rest of the default palette (v4: `--color-*: initial;` before the custom definitions; keep `white`, `black`, `transparent`, `current`) so off-brand ramps such as `emerald` are unavailable. Check pre-styled UI libraries before adopting them.
 
@@ -242,6 +242,9 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Mode | Surface | Composite | text.primary | text.secondary | icon.subtle |
 | --- | --- | --- | --- | --- | --- |
 | Light | `surface.default` (#f7f7f7) | #e5e5e5 | 13.7 | 5.2 | 3.7 |
+| Light | `surface.subtle` (#eeeeee) | #dddddd | 12.7 | 4.9 | 3.4 |
+| Light | `surface.raised` (#ffffff) | #ededed | 14.7 | 5.6 | 4.0 |
+| Light | `surface.muted` (#dedede), not supported | #cecece | 10.9 | **4.2** | **2.97** |
 | Dark | `surface.default` (#1b1b1b) | #2d2d2d | 11.9 | 8.2 | 6.0 |
 | Dark | `surface.subtle` (#303030) | #414141 | 8.8 | 6.0 | 4.5 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #545454 | 6.5 | **4.48** | 3.3 |
@@ -259,7 +262,6 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **`surface.raised` and `surface.muted` are identical in dark mode** (Gray 800). A raised card can't be told apart from a muted area, such as a selected chip. Decide whether that's acceptable, or add a separate dark raised step (for example an elevation overlay).
 - **Purple has no semantic tokens yet** and no ramp panel in the Figma Colors frame.
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
-- **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **Known failures from section 7:** dark `text.placeholder` on `surface.muted` and `surface.raised` (4.2:1); dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
