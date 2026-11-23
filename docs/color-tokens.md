@@ -243,6 +243,9 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Mode | Surface | Composite | text.primary | text.secondary | icon.subtle |
 | --- | --- | --- | --- | --- | --- |
 | Light | `surface.default` (#f7f7f7) | #e5e5e5 | 13.7 | 5.2 | 3.7 |
+| Light | `surface.subtle` (#eeeeee) | #dddddd | 12.7 | 4.85 | 3.4 |
+| Light | `surface.muted` (#dedede) | #cecece | 10.9 | **4.2** | **2.97** |
+| Light | `surface.raised` (#ffffff) | #ededed | 14.7 | 5.6 | 4.0 |
 | Dark | `surface.default` (#1b1b1b) | #292929 | 12.5 | 8.6 | 6.3 |
 | Dark | `surface.subtle` (#303030) | #3c3c3c | 9.5 | 6.5 | 4.8 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #505050 | 7.0 | 4.77 | 3.5 |
@@ -260,7 +263,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **`surface.raised` and `surface.muted` are identical in dark mode** (Gray 800). A raised card can't be told apart from a muted area, such as a selected chip. Decide whether that's acceptable, or add a separate dark raised step (for example an elevation overlay).
 - **Purple has no semantic tokens yet** and no ramp panel in the Figma Colors frame.
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
-- **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
+- **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1 (see the section 7 hover table). It passes on `surface.default`, `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
