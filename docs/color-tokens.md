@@ -63,7 +63,7 @@ Full ramps (bold = base):
 | 900 | #053630 | #3f2900 | #2a1e67 | **#303030** | #033052 | #5b0605 |
 | 950 | #00201c | #261700 | #190b48 | #1b1b1b | #001c35 | #3b0000 |
 
-**Pairing rule:** step 600 and darker passes AA (4.5:1) with white text in every ramp (4.6–5.0:1). Step 500 and lighter passes AA with black text (6.2–6.7:1). 600 is the transition step: black text on 600 is borderline (Gray 4.49, Yellow 4.42, Purple 4.36, Red 4.23) and should not be used.
+**Pairing rule:** step 600 and darker passes AA (4.5:1) with white text in every ramp (4.6–5.0:1). Step 500 and lighter passes AA with black text (6.2–6.7:1). 600 is the transition step: black text on 600 is borderline (Blue 4.56, Green 4.50, Gray 4.49, Yellow 4.42, Purple 4.36, Red 4.23) and should not be used.
 
 ## 4. Semantic tier
 
