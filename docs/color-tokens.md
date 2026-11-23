@@ -74,7 +74,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | Token | Light | Dark | Use | Contrast (light / dark) |
 | --- | --- | --- | --- | --- |
 | `surface.default` | `gray.50` (#f7f7f7) | `gray.950` (#1b1b1b) | Page and app background. | n/a |
-| `surface.raised` | `white` (#ffffff) | `gray.800` (#454545) | Cards, popovers and panels that sit above the page. Pair with a `border.default` edge in light mode. | text.primary 17.2 / 8.3; text.secondary 6.6 / 5.7; text.placeholder 6.6 / **4.2**; border.strong 4.7 / 4.2 |
+| `surface.raised` | `white` (#ffffff) | `gray.800` (#454545) | Cards, popovers and panels that sit above the page. Pair with a `border.default` edge in light mode. | text.primary 17.2 / 8.3; text.secondary 6.6 / 5.7; border.strong 4.7 / 4.2 |
 | `surface.subtle` | `gray.100` (#eeeeee) | `gray.900` (#303030) | Quiet panels, cards and table stripes on the default surface. | n/a |
 | `surface.muted` | `gray.200` (#dedede) | `gray.800` (#454545) | Pressed or selected neutral areas, chips, dividers with fill. | n/a |
 | `surface.input` | `white` (#ffffff) | `gray.950` (#1b1b1b) | Fill of text inputs, textareas and selects. Use on any surface, including `surface.muted` and `surface.raised`. Always draw a `border.strong` outline; the fill alone does not separate the field from its container. | text.primary 17.2 / 14.8; text.secondary 6.6 / 10.2; text.placeholder 6.6 / 7.5; border.strong 4.7 / 7.5 |
@@ -90,7 +90,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | --- | --- | --- | --- | --- |
 | `text.primary` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Default body and heading text. | 16.1 / 14.8 on surface.default; 14.8 / 11.4 on surface.subtle; 12.8 / 8.3 on surface.muted |
 | `text.secondary` | `gray.700` (#5d5d5d) | `gray.300` (#c7c7c7) | Supporting text, captions, helper text. | 6.1 / 10.2 on surface.default; 5.7 / 7.8 on surface.subtle; 4.9 / 5.7 on surface.muted |
-| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle; 4.9 / 4.2 on surface.muted (not for inputs; use `surface.input`) |
+| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle |
 | `text.disabled` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled text. Exempt from contrast requirements; do not use for readable content. | exempt |
 | `text.inverse` | `gray.100` (#eeeeee) | `gray.950` (#1b1b1b) | Text on surface.inverse. | 14.8 / 14.8 on surface.inverse |
 | `text.brand` | `green.700` (#2e6960) | `green.400` (#8cb5ad) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 7.7 on surface.default; 5.5 / 7.6 on surface.brand-subtle |
