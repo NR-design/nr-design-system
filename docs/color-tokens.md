@@ -231,7 +231,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the values in section 3.
 
-- **All required text pairs pass 4.5:1.** Dark `text.placeholder` on `surface.muted` and `surface.raised` (both Gray 800) is 4.2:1, so it is not used there. Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
+- **All required text pairs pass 4.5:1.** Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
 - **Dark feedback borders on neutral surfaces:** all four pass 3:1 on every dark surface. Info and error use step 400 (info 5.8 on `surface.subtle`, 4.2 on `surface.muted` and `surface.raised`; error 5.5 and 4.0). Previously they used step 600 and failed off the page.
 - **All icon, control border and focus pairs pass 3:1** on `surface.default`, `surface.subtle` and `surface.muted` in both modes.
 - **All data visualization tokens pass 3:1** on `surface.default` and `surface.subtle` in both modes (gridline excepted; it is decorative). Narrowest: dark `dataviz.categorical.5` on `surface.subtle` (3.9:1). On dark `surface.muted` and `surface.raised` (Gray 800), `dataviz.categorical.3` (2.97:1) and `dataviz.categorical.5` (2.8:1) fail, and `dataviz.single` is 3.06:1; see rule 20.
