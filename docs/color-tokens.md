@@ -13,8 +13,8 @@ Figma Documentation: *Nick’s Design Library 2.0*, frame **Colors** (node `524:
 | File | Tier | Contents |
 | --- | --- | --- |
 | `color.primitive.tokens.json` | Primitive | 73 tokens: Green, Yellow, Gray, Blue, Red and Purple ramps (11 steps each), one `base` alias per ramp, and white |
-| `color.semantic.light.tokens.json` | Semantic | 69 role-based tokens for light mode. All are aliases to primitives except `surface.scrim` and `surface.interactive.hover` |
-| `color.semantic.dark.tokens.json` | Semantic | 69 role-based tokens for dark mode. Same exceptions as light |
+| `color.semantic.light.tokens.json` | Semantic | 70 role-based tokens for light mode. All are aliases to primitives except `surface.scrim` and `surface.interactive.hover` |
+| `color.semantic.dark.tokens.json` | Semantic | 70 role-based tokens for dark mode. Same exceptions as light |
 
 Load `color.primitive.tokens.json` together with one semantic file. A semantic file on its own has unresolved aliases.
 
@@ -63,7 +63,7 @@ Full ramps (bold = base):
 | 900 | #053630 | #3f2900 | #2a1e67 | **#303030** | #033052 | #5b0605 |
 | 950 | #00201c | #261700 | #190b48 | #1b1b1b | #001c35 | #3b0000 |
 
-**Pairing rule:** step 600 and darker passes AA (4.5:1) with white text in every ramp (4.6–5.0:1). Step 500 and lighter passes AA with black text (6.2–6.7:1). 600 is the transition step: black text on 600 is borderline (Gray 4.49, Yellow 4.42, Purple 4.36, Red 4.23) and should not be used.
+**Pairing rule:** step 600 and darker passes AA (4.5:1) with white text in every ramp (4.6–5.0:1). Step 500 and lighter passes AA with black text (6.2–6.7:1). 600 is the transition step: black text on 600 is borderline (Blue 4.56, Green 4.50, Gray 4.49, Yellow 4.42, Purple 4.36, Red 4.23) and should not be used.
 
 ## 4. Semantic tier
 
@@ -74,7 +74,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | Token | Light | Dark | Use | Contrast (light / dark) |
 | --- | --- | --- | --- | --- |
 | `surface.default` | `gray.50` (#f7f7f7) | `gray.950` (#1b1b1b) | Page and app background. | n/a |
-| `surface.raised` | `white` (#ffffff) | `gray.800` (#454545) | Cards, popovers and panels that sit above the page. Pair with a `border.default` edge in light mode. | text.primary 17.2 / 8.3; text.secondary 6.6 / 5.7; text.placeholder 6.6 / **4.2**; border.strong 4.7 / 4.2 |
+| `surface.raised` | `white` (#ffffff) | `gray.800` (#454545) | Cards, popovers and panels that sit above the page. Pair with a `border.default` edge in light mode. | text.primary 17.2 / 8.3; text.secondary 6.6 / 5.7; border.strong 4.7 / 4.2 |
 | `surface.subtle` | `gray.100` (#eeeeee) | `gray.900` (#303030) | Quiet panels, cards and table stripes on the default surface. | n/a |
 | `surface.muted` | `gray.200` (#dedede) | `gray.800` (#454545) | Pressed or selected neutral areas, chips, dividers with fill. | n/a |
 | `surface.input` | `white` (#ffffff) | `gray.950` (#1b1b1b) | Fill of text inputs, textareas and selects. Use on any surface, including `surface.muted` and `surface.raised`. Always draw a `border.strong` outline; the fill alone does not separate the field from its container. | text.primary 17.2 / 14.8; text.secondary 6.6 / 10.2; text.placeholder 6.6 / 7.5; border.strong 4.7 / 7.5 |
@@ -90,10 +90,10 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | --- | --- | --- | --- | --- |
 | `text.primary` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Default body and heading text. | 16.1 / 14.8 on surface.default; 14.8 / 11.4 on surface.subtle; 12.8 / 8.3 on surface.muted |
 | `text.secondary` | `gray.700` (#5d5d5d) | `gray.300` (#c7c7c7) | Supporting text, captions, helper text. | 6.1 / 10.2 on surface.default; 5.7 / 7.8 on surface.subtle; 4.9 / 5.7 on surface.muted |
-| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle; 4.9 / 4.2 on surface.muted (not for inputs; use `surface.input`) |
+| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Use only on `surface.input`. | 6.6 / 7.5 on surface.input |
 | `text.disabled` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled text. Exempt from contrast requirements; do not use for readable content. | exempt |
 | `text.inverse` | `gray.100` (#eeeeee) | `gray.950` (#1b1b1b) | Text on surface.inverse. | 14.8 / 14.8 on surface.inverse |
-| `text.brand` | `green.700` (#2e6960) | `green.400` (#8cb5ad) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 7.7 on surface.default; 5.5 / 7.6 on surface.brand-subtle |
+| `text.brand` | `green.700` (#2e6960) | `green.300` (#b1cfc9) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 10.4 on surface.default; 5.5 / 7.9 on surface.subtle; 4.7 / 5.8 on surface.muted; 6.4 / 5.8 on surface.raised; 5.5 / 10.3 on surface.brand-subtle |
 | `text.link` | `green.900` (#053630) | `green.300` (#b1cfc9) | Inline links. Always pair with an underline or another non-color cue. | 12.4 / 10.4 on surface.default; 11.5 / 7.9 on surface.subtle |
 | `text.selection.background` | `yellow.200` (#ffd799) | `yellow.700` (#7c5500) | Highlighted text. | n/a |
 | `text.selection.foreground` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Text inside a selection. | 12.7 / 5.7 on text.selection.background |
@@ -221,7 +221,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 ## 6. Light and dark modes
 
-- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 6% alpha instead, like the scrim.
+- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised`, `surface.input` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 6% alpha instead, like the scrim.
 - `surface.raised` is lighter than the page in both modes: `white` on `gray.50` in light, `gray.800` on `gray.950` in dark. In dark mode it shares its value with `surface.muted`. Dark surfaces step from `gray.950` through `gray.900` and `gray.800`.
 - Dark action colors are lighter than in light mode (`green.400` instead of `green.600`), get lighter on hover and press, and their on-color is a dark green (`green.900`).
 - `surface.inverse` is dark in light mode (`gray.950`) and light in dark mode (`gray.100`).
@@ -231,7 +231,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the values in section 3.
 
-- **All required text pairs pass 4.5:1.** Dark `text.placeholder` on `surface.muted` and `surface.raised` (both Gray 800) is 4.2:1, so it is not used there. Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
+- **All required text pairs pass 4.5:1.** Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
 - **Dark feedback borders on neutral surfaces:** all four pass 3:1 on every dark surface. Info and error use step 400 (info 5.8 on `surface.subtle`, 4.2 on `surface.muted` and `surface.raised`; error 5.5 and 4.0). Previously they used step 600 and failed off the page.
 - **All icon, control border and focus pairs pass 3:1** on `surface.default`, `surface.subtle` and `surface.muted` in both modes.
 - **All data visualization tokens pass 3:1** on `surface.default` and `surface.subtle` in both modes (gridline excepted; it is decorative). Narrowest: dark `dataviz.categorical.5` on `surface.subtle` (3.9:1). On dark `surface.muted` and `surface.raised` (Gray 800), `dataviz.categorical.3` (2.97:1) and `dataviz.categorical.5` (2.8:1) fail, and `dataviz.single` is 3.06:1; see rule 20.
@@ -243,9 +243,14 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Mode | Surface | Composite | text.primary | text.secondary | icon.subtle |
 | --- | --- | --- | --- | --- | --- |
 | Light | `surface.default` (#f7f7f7) | #e5e5e5 | 13.7 | 5.2 | 3.7 |
+| Light | `surface.subtle` (#eeeeee) | #dddddd | 12.7 | 4.85 | 3.4 |
+| Light | `surface.muted` (#dedede) | #cecece | 10.9 | **4.2** | **2.97** |
+| Light | `surface.raised` (#ffffff) | #ededed | 14.7 | 5.6 | 4.0 |
+| Light | `surface.brand-subtle` (#e6f2ef) | #d6e1de | 12.9 | 4.9 | 3.5 |
 | Dark | `surface.default` (#1b1b1b) | #292929 | 12.5 | 8.6 | 6.3 |
 | Dark | `surface.subtle` (#303030) | #3c3c3c | 9.5 | 6.5 | 4.8 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #505050 | 7.0 | 4.77 | 3.5 |
+| Dark | `surface.brand-subtle` (#00201c) | #0f2d2a | 12.7 | 8.7 | 6.4 |
 
 - **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.0 dark.
 
@@ -260,7 +265,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **`surface.raised` and `surface.muted` are identical in dark mode** (Gray 800). A raised card can't be told apart from a muted area, such as a selected chip. Decide whether that's acceptable, or add a separate dark raised step (for example an elevation overlay).
 - **Purple has no semantic tokens yet** and no ramp panel in the Figma Colors frame.
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
-- **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
+- **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1 (see the section 7 hover table). It passes on `surface.default`, `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
