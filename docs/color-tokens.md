@@ -138,7 +138,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | --- | --- | --- | --- | --- |
 | `feedback.info.background` | `blue.100` (#e6f0f9) | `blue.950` (#001c35) | Info banner fill. | n/a |
 | `feedback.info.foreground` | `blue.950` (#001c35) | `blue.400` (#90afcd) | Info text and icons on feedback.info.background. | 14.9 / 7.6 on feedback.info.background |
-| `feedback.info.border` | `blue.700` (#275d8c) | `blue.600` (#4b79a3) | Info banner border. | 6.5 / 3.7 on surface.default |
+| `feedback.info.border` | `blue.700` (#275d8c) | `blue.400` (#90afcd) | Info banner border. | 6.5 / 7.6 on surface.default; 5.8 on surface.subtle; 4.2 on surface.muted and surface.raised (dark) |
 | `feedback.success.background` | `green.100` (#e6f2ef) | `green.950` (#00201c) | Success banner fill. | n/a |
 | `feedback.success.foreground` | `green.800` (#1a4f47) | `green.300` (#b1cfc9) | Success text and icons on feedback.success.background. | 8.1 / 10.3 on feedback.success.background |
 | `feedback.success.border` | `green.600` (#3f7f75) | `green.500` (#689b92) | Success banner border. | 4.4 / 5.5 on surface.default |
@@ -147,7 +147,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `feedback.warning.border` | `yellow.600` (#996a00) | `yellow.400` (#db9e27) | Warning banner border. | 4.4 / 7.3 on surface.default; 4.1 / 5.6 on surface.subtle; 3.5 / 4.1 on surface.muted |
 | `feedback.error.background` | `red.100` (#ffe9e5) | `red.950` (#3b0000) | Error banner fill. | n/a |
 | `feedback.error.foreground` | `red.950` (#3b0000) | `red.400` (#dd958b) | Error text and icons on feedback.error.background. | 15.2 / 7.4 on feedback.error.background |
-| `feedback.error.border` | `red.700` (#a3342b) | `red.600` (#b55146) | Error banner border. | 6.4 / 3.5 on surface.default |
+| `feedback.error.border` | `red.700` (#a3342b) | `red.400` (#dd958b) | Error banner border. | 6.4 / 7.2 on surface.default; 5.5 on surface.subtle; 4.0 on surface.muted and surface.raised (dark) |
 | `feedback.success.solid.background` | `green.700` (#2e6960) | `green.400` (#8cb5ad) | Success badges and filled alerts. | n/a |
 | `feedback.success.solid.foreground` | `white` (#ffffff) | `green.950` (#00201c) | Success badges and filled alerts. | 6.4 / 7.6 on feedback.success.solid.background |
 | `feedback.warning.solid.background` | `yellow.300` (#ffbc42) | `yellow.300` (#ffbc42) | Warning badges and filled alerts. | n/a |
@@ -232,7 +232,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the values in section 3.
 
 - **All required text pairs pass 4.5:1.** Dark `text.placeholder` on `surface.muted` and `surface.raised` (both Gray 800) is 4.2:1, so it is not used there. Inputs use `surface.input` (Gray 950 in dark), where placeholder is 7.5:1, so inputs can sit on any surface. Input `border.strong` is 4.7 / 7.5 on `surface.input`, and 4.2 on dark `surface.muted` and `surface.raised`, which passes 3:1.
-- **Dark feedback borders on neutral surfaces:** info and error borders are below 3:1 off the page (info 2.9 on `surface.subtle`, 2.1 on `surface.muted` and `surface.raised`; error 2.7 and 1.9). They pass only on `surface.default`. Banners inside dark cards and panels rely on their fill and icon, not the border, to stand out.
+- **Dark feedback borders on neutral surfaces:** all four pass 3:1 on every dark surface. Info and error use step 400 (info 5.8 on `surface.subtle`, 4.2 on `surface.muted` and `surface.raised`; error 5.5 and 4.0). Previously they used step 600 and failed off the page.
 - **All icon, control border and focus pairs pass 3:1** on `surface.default`, `surface.subtle` and `surface.muted` in both modes.
 - **All data visualization tokens pass 3:1** on `surface.default` and `surface.subtle` in both modes (gridline excepted; it is decorative). Narrowest: dark `dataviz.categorical.5` on `surface.subtle` (3.9:1). On dark `surface.muted` and `surface.raised` (Gray 800), `dataviz.categorical.3` (2.97:1) and `dataviz.categorical.5` (2.8:1) fail, and `dataviz.single` is 3.06:1; see rule 20.
 - **Pairing rule (section 3)** holds for all six ramps.
@@ -262,7 +262,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
-- **Known failures from section 7:** dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
+- **Known failures from section 7:** dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
 - **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
