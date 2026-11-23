@@ -90,7 +90,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | --- | --- | --- | --- | --- |
 | `text.primary` | `gray.950` (#1b1b1b) | `gray.100` (#eeeeee) | Default body and heading text. | 16.1 / 14.8 on surface.default; 14.8 / 11.4 on surface.subtle; 12.8 / 8.3 on surface.muted |
 | `text.secondary` | `gray.700` (#5d5d5d) | `gray.300` (#c7c7c7) | Supporting text, captions, helper text. | 6.1 / 10.2 on surface.default; 5.7 / 7.8 on surface.subtle; 4.9 / 5.7 on surface.muted |
-| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Pair with `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle |
+| `text.placeholder` | `gray.700` (#5d5d5d) | `gray.400` (#ababab) | Placeholder text in inputs. Use only on `surface.input`. | 6.6 / 7.5 on surface.input; 6.1 / 7.5 on surface.default; 5.7 / 5.7 on surface.subtle |
 | `text.disabled` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled text. Exempt from contrast requirements; do not use for readable content. | exempt |
 | `text.inverse` | `gray.100` (#eeeeee) | `gray.950` (#1b1b1b) | Text on surface.inverse. | 14.8 / 14.8 on surface.inverse |
 | `text.brand` | `green.700` (#2e6960) | `green.300` (#b1cfc9) | Brand-colored text such as eyebrows and emphasized labels. | 5.9 / 10.4 on surface.default; 5.5 / 7.9 on surface.subtle; 4.7 / 5.8 on surface.muted; 6.4 / 5.8 on surface.raised; 5.5 / 10.3 on surface.brand-subtle |
