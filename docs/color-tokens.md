@@ -129,7 +129,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `action.secondary.pressed` | `green.500` (#689b92) | `green.700` (#2e6960) | Accent button pressed. | n/a |
 | `action.secondary.on` | `green.950` (#00201c) | `green.100` (#e6f2ef) | Text and icons on any action.secondary state. | 10.3 / 11.6 on action.secondary.default; 7.6 / 8.1 on action.secondary.hover; 5.5 / 5.5 on action.secondary.pressed |
 | `action.disabled.background` | `gray.100` (#eeeeee) | `gray.900` (#303030) | Disabled control fill. | exempt |
-| `action.disabled.foreground` | `gray.400` (#ababab) | `gray.600` (#747474) | Disabled control text and icons. | exempt |
+| `action.disabled.foreground` | `gray.400` (#ababab) | `gray.700` (#5d5d5d) | Disabled control text and icons. | exempt |
 
 ### Feedback (status messages)
 
@@ -143,7 +143,7 @@ Role-based aliases. **Components and agents reference only these tokens.** Each 
 | `feedback.success.border` | `green.600` (#3f7f75) | `green.500` (#689b92) | Success banner border. | 4.4 / 5.5 on surface.default |
 | `feedback.warning.background` | `yellow.50` (#fff5e7) | `yellow.950` (#261700) | Warning banner fill. | n/a |
 | `feedback.warning.foreground` | `yellow.800` (#5c3f00) | `yellow.200` (#ffd799) | Warning text and icons on feedback.warning.background. | 9.0 / 12.8 on feedback.warning.background |
-| `feedback.warning.border` | `yellow.500` (#bb8306) | `yellow.400` (#db9e27) | Warning banner border. | 3.1 / 7.3 on surface.default |
+| `feedback.warning.border` | `yellow.600` (#996a00) | `yellow.400` (#db9e27) | Warning banner border. | 4.4 / 7.3 on surface.default; 4.1 / 5.6 on surface.subtle; 3.5 / 4.1 on surface.muted |
 | `feedback.error.background` | `red.100` (#ffe9e5) | `red.950` (#3b0000) | Error banner fill. | n/a |
 | `feedback.error.foreground` | `red.950` (#3b0000) | `red.400` (#dd958b) | Error text and icons on feedback.error.background. | 15.2 / 7.4 on feedback.error.background |
 | `feedback.error.border` | `red.700` (#a3342b) | `red.600` (#b55146) | Error banner border. | 6.4 / 3.5 on surface.default |
@@ -220,7 +220,7 @@ Chart colors. Every token is ≥3:1 on both `surface.default` and `surface.subtl
 
 ## 6. Light and dark modes
 
-- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. White is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds).
+- Light surfaces step from `gray.50` through `gray.100` and `gray.200`. The `white` primitive is used only for `surface.raised` and for on-colors (`action.primary.on`, solid feedback foregrounds). The dark hover overlay (`surface.interactive.hover`) uses a literal `#ffffff` at 8% alpha instead, like the scrim.
 - `surface.raised` is lighter than the page in both modes: `white` on `gray.50` in light, `gray.800` on `gray.950` in dark. In dark mode it shares its value with `surface.muted`. Dark surfaces step from `gray.950` through `gray.900` and `gray.800`.
 - Dark action colors are lighter than in light mode (`green.400` instead of `green.600`), get lighter on hover and press, and their on-color is a dark green (`green.900`).
 - `surface.inverse` is dark in light mode (`gray.950`) and light in dark mode (`gray.100`).
@@ -236,7 +236,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **All data visualization tokens pass 3:1** on `surface.default` and `surface.subtle` in both modes (gridline excepted; it is decorative). Narrowest: dark `dataviz.categorical.5` on `surface.subtle` (3.9:1). On dark `surface.muted` and `surface.raised` (Gray 800), `dataviz.categorical.3` (2.97:1) and `dataviz.categorical.5` (2.8:1) fail, and `dataviz.single` is 3.06:1; see rule 20.
 - **Pairing rule (section 3)** holds for all six ramps.
 - **Previous failures fixed:** light `text.secondary` on `surface.subtle` (was 4.2, now 5.7); light `border.strong` on `surface.default` (was 2.9, now 4.4).
-- **Narrowest margin:** light `feedback.warning.border` on `surface.default` is 3.08:1 against a 3:1 target. Any darkening of the light page surface will make it fail.
+- **Narrowest margin:** light `feedback.warning.border`, `icon.subtle` and `border.strong` on `surface.muted` are 3.5:1 against a 3:1 target. Any darkening of the light muted surface will make them fail.
 - **Hover overlay composites** (verified):
 
 | Mode | Surface | Composite | text.primary | text.secondary | icon.subtle |
@@ -246,7 +246,7 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 | Dark | `surface.subtle` (#303030) | #414141 | 8.8 | 6.0 | 4.5 |
 | Dark | `surface.muted` / `surface.raised` (#454545) | #545454 | 6.5 | **4.48** | 3.3 |
 
-- **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.8 dark.
+- **Disabled (exempt, for reference):** `border.disabled` 1.3 light on default / 1.8 dark on default, 1.4 dark on subtle; `action.disabled.foreground` on `action.disabled.background` 2.0 light / 2.0 dark.
 
 ## 8. Known gaps
 
@@ -259,12 +259,9 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **`surface.raised` and `surface.muted` are identical in dark mode** (Gray 800). A raised card can't be told apart from a muted area, such as a selected chip. Decide whether that's acceptable, or add a separate dark raised step (for example an elevation overlay).
 - **Purple has no semantic tokens yet** and no ramp panel in the Figma Colors frame.
 - **Open ramp tuning:** Yellow dark steps turn brown (optional slight hue shift toward orange); tint chroma on 50 and 100 (optional reduction).
-- **Light warning border fails off the page.** `feedback.warning.border` (`yellow.500`) is 2.8:1 on `surface.subtle` and 2.5:1 on `surface.muted`. It passes only on `surface.default` (3.08:1) and `surface.raised`.
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1. Section 7 verifies the light overlay only on `surface.default`; it also passes on `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **Known failures from section 7:** dark `text.placeholder` on `surface.muted` and `surface.raised` (4.2:1); dark info and error borders off `surface.default`; dark hover `text.secondary` on `surface.muted` and `surface.raised` (4.48:1).
-- **Disabled steps differ in dark mode.** `text.disabled` is `gray.700` but `action.disabled.foreground` is `gray.600`. Both are `gray.400` in light mode.
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
-- **Section 6 white statement is incomplete.** White is also used in the dark hover overlay (`surface.interactive.hover`).
 - **No component tier, high-contrast mode, extra native surface levels or CI validation.**
 - **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
