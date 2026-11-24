@@ -1,6 +1,6 @@
 # Spacing tokens: context and usage rules
 
-Goal: This document describes the spacing token files and the rules for using them. It is written for both people and AI agents. It is the spacing counterpart to `color-tokens.md` and follows the same tier model (primitive → semantic).
+Goal: This document describes the spacing token files and the rules for using them. It is written for both people and AI agents. It is the spacing counterpart to `color-tokens.md` and follows the same tier model (primitive → semantic). Component dimensions are in `sizing-tokens.md`. Breakpoints and page widths are in `layout-tokens.md`.
 
 Status (2026-11-24): **target state.** Tailwind CSS v4.3.5 is installed and its default theme is the primitive tier. The semantic tokens in section 4 are **proposed** and have not been generated yet: `tokens/primitives/spacing.json` is empty and no semantic spacing file exists. Where code or Figma disagree with this document, this document is the target.
 
@@ -8,9 +8,9 @@ Status (2026-11-24): **target state.** Tailwind CSS v4.3.5 is installed and its 
 
 | File | Tier | Contents |
 | --- | --- | --- |
-| Tailwind default theme (`tailwindcss/theme.css`) | Primitive | The `--spacing` base unit, breakpoints and container widths. **Referenced, not recreated.** |
+| Tailwind default theme (`tailwindcss/theme.css`) | Primitive | The `--spacing` base unit and the scale it generates. **Referenced, not recreated.** |
 | `tokens/primitives/spacing.json` | Primitive | Empty today. If generated, it is derived from the Tailwind theme at build time and never hand-authored |
-| `tokens/semantic/spacing.json` | Semantic | 32 role-based tokens (section 4). All are aliases to primitive steps |
+| `tokens/semantic/spacing.json` | Semantic | 24 role-based tokens (section 4). All are aliases to primitive steps |
 
 There is one semantic file. Spacing has no light and dark modes (section 6).
 
@@ -30,7 +30,7 @@ Raw values only. Components and agents must not use primitive steps directly. **
 
 **Base unit:** `--spacing: 0.25rem` (4px at the default root size). Every step is `n × 0.25rem`. The numeric utilities (`p-4`, `gap-6`, `size-10`, `w-12`) all resolve to `calc(var(--spacing) * n)`.
 
-**The same scale drives** padding (`p-*`), margin (`m-*`), gap (`gap-*`, `gap-x-*`, `gap-y-*`), `inset-*`, `size-*`, `w-*`, `h-*` and `min-`/`max-` variants.
+**The same scale drives** padding (`p-*`), margin (`m-*`), gap (`gap-*`, `gap-x-*`, `gap-y-*`) and `inset-*`. It also drives sizing utilities (`size-*`, `w-*`, `h-*`), which are covered in `sizing-tokens.md`.
 
 Named scale (this is the full set this system treats as available):
 
@@ -56,29 +56,7 @@ Named scale (this is the full set this system treats as available):
 | `12` | 3 | 48 | | | | |
 | `14` | 3.5 | 56 | | | | |
 
-**Fractions and keywords** (`w-1/2`, `w-full`, `w-screen`, `h-dvh`, `w-auto`, `w-fit`) are layout utilities, not spacing tokens. Use them as Tailwind defines them.
-
-**Breakpoints** (mobile-first, `min-width`):
-
-| Variant | Value | px |
-| --- | --- | --- |
-| `sm` | 40rem | 640 |
-| `md` | 48rem | 768 |
-| `lg` | 64rem | 1024 |
-| `xl` | 80rem | 1280 |
-| `2xl` | 96rem | 1536 |
-
-**Container widths** (`max-w-*`, `w-*`, and container query variants `@3xs` to `@7xl`):
-
-| Name | rem | px | | Name | rem | px |
-| --- | --- | --- | --- | --- | --- | --- |
-| `3xs` | 16 | 256 | | `2xl` | 42 | 672 |
-| `2xs` | 18 | 288 | | `3xl` | 48 | 768 |
-| `xs` | 20 | 320 | | `4xl` | 56 | 896 |
-| `sm` | 24 | 384 | | `5xl` | 64 | 1024 |
-| `md` | 28 | 448 | | `6xl` | 72 | 1152 |
-| `lg` | 32 | 512 | | `7xl` | 80 | 1280 |
-| `xl` | 36 | 576 | | | | |
+Breakpoints and container widths are in `layout-tokens.md`. Fractions, keywords and component dimensions are in `sizing-tokens.md`.
 
 Source: `node_modules/tailwindcss/theme.css`, Tailwind v4.3.5. If Tailwind is upgraded, re-check this section.
 
@@ -146,23 +124,6 @@ Use `space.gap.*` when items are laid out on both axes (CSS grid, wrapping card 
 | `space.section.md` | `16` | 64px | `py-section-md` | Default vertical section padding. |
 | `space.section.lg` | `24` | 96px | `py-section-lg` | Large screens and hero sections. |
 
-### Size (control heights, icons and target sizes)
-
-These alias the same scale and produce `h-*`, `w-*` and `size-*` utilities.
-
-| Token | Step | Value | Utility | Use |
-| --- | --- | --- | --- | --- |
-| `size.target.min` | `6` | 24px | `min-h-target-min` | Minimum size of any interactive target (WCAG 2.2, 2.5.8 Target Size, Minimum). |
-| `size.target.touch` | `11` | 44px | `min-h-target-touch` | Recommended touch target (WCAG 2.5.5, level AAA, and common platform guidance). |
-| `size.control.sm` | `8` | 32px | `h-control-sm` | Small button, input, select. |
-| `size.control.md` | `10` | 40px | `h-control-md` | Default button, input, select. |
-| `size.control.lg` | `12` | 48px | `h-control-lg` | Large button, input, select. |
-| `size.icon.sm` | `4` | 16px | `size-icon-sm` | Icons inside compact controls. |
-| `size.icon.md` | `5` | 20px | `size-icon-md` | Default icon. |
-| `size.icon.lg` | `6` | 24px | `size-icon-lg` | Standalone and large icons. |
-
-`size.control.sm` and `size.control.md` are below `size.target.touch`. On touch interfaces, use `size.control.lg` or extend the hit area to at least 44px with padding or a pseudo-element.
-
 ## 5. Usage rules
 
 1. **Semantic tokens only.** Never use a primitive step (`p-4`), an arbitrary value (`p-[13px]`) or a raw px or rem value in a component.
@@ -172,14 +133,12 @@ These alias the same scale and produce `h-*`, `w-*` and `size-*` utilities.
 5. **Logical properties.** Use `ps-*`, `pe-*`, `ms-*`, `me-*` (and `start-*`, `end-*`) instead of left and right so layouts follow text direction. Use `px-*` and `py-*` freely. `gap-*` is already direction-neutral.
 6. **Page edges and sections.** Page container side padding uses `space.gutter.*`. Vertical padding of full-width sections uses `space.section.*`. `space.stack.*` and `space.inline.*` are not for page margins.
 7. **Grids and bento layouts.** Space tiles with `space.gap.*`, pad tile contents with `space.inset.*`, and space content inside a tile with `space.stack.*`. Suggestion: keep the gap between tiles equal to or smaller than the tile padding so the tiles read as separate cards. Which tiles span columns or rows (`col-span-*`, `row-span-*`) and the column tracks (`grid-cols-*`) are layout decisions made with Tailwind utilities and are not tokens.
-8. **Responsive.** Mobile-first. Only `gutter` and `section` may step up at breakpoints, and only to the next token in the same group: `px-gutter-sm md:px-gutter-md lg:px-gutter-lg`. `inset`, `stack`, `inline` and `gap` do not change at breakpoints.
-9. **Target size.** Every interactive element is at least `size.target.min` (24 × 24px). Touch-first interfaces use `size.target.touch` (44px). Space between adjacent targets does not replace target size.
-10. **Layout widths.** Page and content widths use Tailwind's container scale (`max-w-*`, section 3). They are not tokenized.
-11. **Radius is separate.** Corner radius is covered by the radius tokens, not by spacing.
-12. **Tailwind.** Do not redefine `--spacing` or the default scale. Add each semantic token to the theme as `--spacing-<group>-<size>` (for example `--spacing-inset-md: calc(var(--spacing) * 4)`). Two consequences:
+8. **Responsive.** Mobile-first, using the breakpoints in `layout-tokens.md`. Only `gutter` and `section` may step up at breakpoints, and only to the next token in the same group: `px-gutter-sm md:px-gutter-md lg:px-gutter-lg`. `inset`, `stack`, `inline` and `gap` do not change at breakpoints.
+9. **Radius is separate.** Corner radius is covered by the radius tokens, not by spacing.
+10. **Tailwind.** Do not redefine `--spacing` or the default scale. Add each semantic token to the theme as `--spacing-<group>-<size>` (for example `--spacing-inset-md: calc(var(--spacing) * 4)`). Two consequences:
     - The `--spacing-*` namespace feeds every sizing and spacing utility, so `w-inset-md` and `m-gap-md` also compile. Use each token only for its stated purpose.
     - Numeric utilities (`p-4`) still compile, so rule 1 is enforced by convention and review, not by the build.
-13. **Do not invent tokens.** If no token fits, say so and propose a new semantic token rather than using a nearby one or a primitive.
+11. **Do not invent tokens.** If no token fits, say so and propose a new semantic token rather than using a nearby one or a primitive.
 
 ## 6. Modes and density
 
@@ -191,18 +150,17 @@ These alias the same scale and produce `h-*`, `w-*` and `size-*` utilities.
 
 Checked 2026-11-24 against the installed Tailwind v4.3.5.
 
-- **Primitive values:** the base unit, breakpoints and container widths in section 3 match `node_modules/tailwindcss/theme.css`. The scale table is arithmetic from `--spacing: 0.25rem`.
+- **Primitive values:** the base unit in section 3 matches `node_modules/tailwindcss/theme.css`. The scale table is arithmetic from `--spacing: 0.25rem`.
 - **Default utilities:** `npm run build` compiles `gap-4` to `gap: calc(var(--spacing) * 4)` and `p-6` to `padding: calc(var(--spacing) * 6)`.
-- **Semantic variables:** compiling theme variables named `--spacing-inset-md`, `--spacing-gap-md`, `--spacing-gutter-md` and `--spacing-control-md` produced `p-inset-md`, `ps-inset-md`, `gap-gap-md`, `gap-y-gap-md`, `px-gutter-md` and `h-control-md` as expected.
+- **Semantic variables:** compiling theme variables named `--spacing-inset-md`, `--spacing-gap-md` and `--spacing-gutter-md` produced `p-inset-md`, `ps-inset-md`, `gap-gap-md`, `gap-y-gap-md` and `px-gutter-md` as expected.
 - **Not verified:** the semantic token JSON, the generated CSS and any component use. None of these exist yet.
 
 ## 8. Known gaps
 
 - **No generated files.** `tokens/primitives/spacing.json` is empty, `tokens/semantic/spacing.json` does not exist, and no `tokens/dist` output or `src/styles` theme mapping is generated. The build tool for tokens is not chosen.
-- **Semantic values are proposed.** Names, steps and counts (32 tokens) have not been reviewed against real components. Expect adjustments once components use them.
+- **Semantic values are proposed.** Names, steps and counts (24 tokens) have not been reviewed against real components. Expect adjustments once components use them.
 - **`gap-gap-*` reads awkwardly.** The `space.gap` group produces `gap-gap-md`. Renaming the group (for example `space.grid`) would give `gap-grid-md`.
 - **Semantic-only rule is strict.** Rule 1 may leave margin, offset or one-off layout cases without a token. Add tokens rather than relaxing the rule, as in color.
 - **No lint enforcement.** Nothing yet blocks numeric utilities (`p-4`) or arbitrary values in components.
 - **No Figma variables.** A Spacing collection (primitive and semantic) needs to be created from sections 3 and 4.
 - **No density or responsive token values**, and no pairing list in machine-readable form.
-- **Sizing is only partly covered.** Only controls, icons and target sizes are tokenized. Other sizing, such as avatars, uses the Tailwind scale until a component needs a token.
