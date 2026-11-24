@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* Remove Tailwind's default palette; only brand colors are available.
+   Ramps and semantic colors are added here once the color tokens are generated. */
+@theme {
+  --color-*: initial;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
