@@ -9,7 +9,7 @@ driven by W3C DTCG design tokens.
 ```
 .
 ├── tokens/
-│   ├── primitives/        # Raw DTCG values (color, spacing, typography, radius)
+│   ├── primitives/        # Raw DTCG values (color, spacing, sizing, layout, typography, radius)
 │   ├── semantic/          # Purpose-named aliases that reference primitives
 │   └── dist/              # GENERATED CSS vars + TS constants — never hand-edit
 ├── src/
@@ -41,6 +41,11 @@ entry (`@import "tailwindcss"`).
 3. **Dist** is build output (CSS custom properties + TS constants). Regenerate; don't edit.
 
 `src/styles/` maps the generated CSS vars into the Tailwind theme.
+
+Spacing, sizing and layout primitives (scale, breakpoints, container widths)
+reference Tailwind's default theme. Don't recreate them; only semantic tokens
+are authored. Token docs live in `docs/` (`color-tokens.md`,
+`spacing-tokens.md`, `sizing-tokens.md`, `layout-tokens.md`).
 
 ## Import rules
 - `extended/` and `motion/` may import from `ui/`.
