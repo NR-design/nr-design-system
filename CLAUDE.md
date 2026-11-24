@@ -20,9 +20,17 @@ driven by W3C DTCG design tokens.
 │   ├── styles/            # Global CSS + Tailwind theme variable mappings
 │   └── lib/               # Utilities (e.g. class-name merging)
 ├── docs/                  # Component docs and usage guidelines
+├── index.html             # Vite dev playground entry
+├── package.json           # Dependencies and scripts
+├── vite.config.ts         # Vite + React + Tailwind v4 plugin
+├── tsconfig.json          # TypeScript config (app + node)
 ├── CLAUDE.md
 └── README.md
 ```
+
+`src/main.tsx` and `src/App.tsx` are the dev playground only. They are not
+part of the published library. `src/styles/globals.css` is the Tailwind v4
+entry (`@import "tailwindcss"`).
 
 ## Token flow
 `tokens/primitives` → `tokens/semantic` → `tokens/dist`
