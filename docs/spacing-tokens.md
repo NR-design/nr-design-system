@@ -2,9 +2,7 @@
 
 Goal: This document describes the spacing token files and the rules for using them. It is written for both people and AI agents. It is the spacing counterpart to `color-tokens.md` and follows the same tier model (primitive → semantic).
 
-Status (2026-11-24): **target state.** Tailwind CSS v4.3.5 is installed and its default theme is the primitive tier. The semantic tokens in section 4 are **proposed** and have not been generated yet: `tokens/primitives/spacing.json` is empty and no semantic spacing file exists. Where code disagrees with this document, this document is the target.
-
-Related: `color-tokens.md` (same structure and rules style), `tokens/primitives/radius.json` (corner radius is not covered here).
+Status (2026-11-24): **target state.** Tailwind CSS v4.3.5 is installed and its default theme is the primitive tier. The semantic tokens in section 4 are **proposed** and have not been generated yet: `tokens/primitives/spacing.json` is empty and no semantic spacing file exists. Where code or Figma disagree with this document, this document is the target.
 
 ## 1. Files
 
