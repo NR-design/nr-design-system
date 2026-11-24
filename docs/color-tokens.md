@@ -1,5 +1,3 @@
-# color-tokens
-
 # Color tokens: context and usage rules
 
 Goal: This document describes the color token files and the rules for using them. It is written for both people and AI agents.
