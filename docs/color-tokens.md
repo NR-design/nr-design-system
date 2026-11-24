@@ -256,11 +256,15 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 
 ## 8. Known gaps
 
-- **Token files and Figma out of date.** `color.primitive.tokens.json`, both semantic files and the Figma paint styles still use the old 10–190 values. Regenerate them from section 3, remove the in-between Figma steps (150, 250, …), and create Figma variables (Primitives collection; Semantic collection with Light and Dark modes).
-- **Semantic files need the remap in section 4**, plus: add `surface.input` and the 12 `dataviz.*` tokens, rename `jet` to `gray` and `xanthous` to `yellow`, and fix the `soild` typo (`feedback.*.solid.foreground`).
-- **Semantic role names are not in Figma.** Only the primitives map to Figma variables. The semantic names and the light and dark assignments were authored for these files.
+## Library
+- **Figma out of date:** Figma styles and documentation still use the old 10–190 values. Regenerate them from section 3, and create Figma variables (Primitives collection; Semantic collection with Light and Dark modes).
+- **New Token files:** `color.primitive.tokens.json` and both semantic files need to be recreated from section 3. Semantic files will involve a complete remap and new tokens (e.g., `surface.input` and the 12 `dataviz.*` tokens). Ensure old color names (`jet` to `gray` and `xanthous` to `yellow`) are not being used in primitives, and fix the `soild` typo (`feedback.*.solid.foreground`).
 - **Figma’s native export omits `$description`.** Semantic descriptions (purpose and pairing) would be lost on a round trip through Figma’s export, so the JSON files stay the source of truth.
 - **No machine-readable pairing list, status or deprecation fields.** Pairings and rules exist only in descriptions and in this document.
+- **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
+- **No component tier, high-contrast mode, extra native surface levels or CI validation.**
+
+## Colors & Mappings
 - **Light surfaces are close together.** With `surface.default` at Gray 50, `surface.subtle` (Gray 100) is only 1.08:1 against the page and `surface.raised` (white) is 1.07:1. Cards and panels need a `border.default` edge to separate reliably.
 - **`surface.raised` and `surface.muted` are identical in dark mode** (Gray 800). A raised card can't be told apart from a muted area, such as a selected chip. Decide whether that's acceptable, or add a separate dark raised step (for example an elevation overlay).
 - **Purple has no semantic tokens yet** and no ramp panel in the Figma Colors frame.
@@ -268,5 +272,3 @@ Checked 2026-11-21 with the WCAG 2.x relative-luminance formula against the valu
 - **Light hover overlay fails on `surface.muted`.** The composite (`#cecece`) gives `text.secondary` 4.2:1 and `icon.subtle` 2.97:1 (see the section 7 hover table). It passes on `surface.default`, `surface.subtle` and `surface.raised`.
 - **No chart colors for dark cards.** Charts cannot sit on dark `surface.raised` or `surface.muted` (see rule 20 and section 7). Decide whether charts in dark cards need their own tokens or a different card surface.
 - **`border.default` matches `surface.interactive.selected`** in both modes (`green.200` / `green.900`), so a selected card loses its `border.default` edge.
-- **No component tier, high-contrast mode, extra native surface levels or CI validation.**
-- **Build tool not chosen.** No CSS, Tailwind theme, Swift or Kotlin outputs are generated yet.
